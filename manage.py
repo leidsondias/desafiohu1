@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 # -*- coding: utf-8 -*-
+import os
 
 from flask_script import Manager, prompt_bool
 
@@ -8,6 +9,27 @@ from search_api import app, db
 from search_api.models import City
 
 manager = Manager(app)
+
+
+@manager.command
+def test():
+    import unittest
+    testmodules = [
+        'search_api.tests',
+    ]
+
+    suite = unittest.TestSuite()
+
+    for t in testmodules:
+        try:
+            mod = __import__(t, globals(), locals(), ['suite'])
+            suitefn = getattr(mod, 'suite')
+            suite.addTest(suitefn())
+        except (ImportError, AttributeError):
+            suite.addTest(unittest.defaultTestLoader.loadTestsFromName(t))
+
+    unittest.TextTestRunner().run(suite)
+
 
 
 @manager.command

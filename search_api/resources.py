@@ -19,9 +19,9 @@ class AutoCompleteListResource(Resource):
         obj_list = []
         if query:
             for model in (Hotel, City):
-                object = model.query.filter(model.name.like(query+'%')) \
+                obj = model.query.filter(model.name.like(query+'%')) \
                     .slice(limit, offset)
-                obj_list.extend(object)
+                obj_list.extend(obj)
         else:
             # @TODO ERRO
             pass
