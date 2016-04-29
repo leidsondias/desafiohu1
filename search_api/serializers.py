@@ -22,7 +22,8 @@ class AvailabilitySerializer(serpy.Serializer):
     id = serpy.IntField()
     date = serpy.MethodField()
     available = serpy.BoolField()
-    hotel = HotelSerializer()
+    # hotel = HotelSerializer()
+    hotel_id = serpy.IntField()
 
     def get_date(self, obj):
         return obj.date.isoformat()

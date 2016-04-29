@@ -35,28 +35,34 @@ class SearchResource(Resource):
     parser = reqparse.RequestParser()
     parser.add_argument('kind')
     parser.add_argument('id')
-    parser.add_argument('date')
+    parser.add_argument('start_date')
+    parser.add_argument('end_date')
 
     def post(self):
         params = self.parser.parse_args()
         kind = params.get('kind')
-        id = params['id']
-        date = params.get('date')
+        _id = params['id']
+        start_date = params.get('start_date')
+        end_date = params.get('end_date')
 
-        filters = {"available": True}
+        filters = {'available': True}
+        date_filter = ''
+
+        if start_date:
+            date_filter = Availability.date.between(start_date, end_date)
+            filters.pop('available')
 
         if kind == 'city':
-            if date:
-                filters.update({"date": date})
-
             query = Availability.query.filter_by(**filters). \
                 from_self(). \
-                join(Availability.hotel).filter_by(city_id=id)
-            serializer = AvailabilitySerializer(query, many=True)
+                join(Availability.hotel).filter_by(city_id=_id). \
+                filter(date_filter)
         else:
-            filters.update({"hotel_id": id})
-            query = Availability.query.filter_by(**filters)
-            serializer = AvailabilitySerializer(query, many=True)
+            filters.update({"hotel_id": _id})
+            query = Availability.query.filter_by(**filters). \
+                filter(date_filter)
+
+        serializer = AvailabilitySerializer(query, many=True)
 
         return serializer.data
 
