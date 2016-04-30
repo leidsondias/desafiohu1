@@ -42,7 +42,7 @@ class Availability(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     date = db.Column(db.Date)
     hotel_id = db.Column(db.Integer, db.ForeignKey('hotel.id'))
-    available = db.Column(db.Boolean)
+    available = db.Column(db.Integer)
 
     def __init__(self, hotel_id, date, available):
         self.hotel_id = hotel_id
