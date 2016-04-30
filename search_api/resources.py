@@ -66,10 +66,11 @@ class SearchResource(Resource):
         start_date = params.get('start_date')
         end_date = params.get('end_date')
 
-        filters = {}
+        filters = {"available": True}
         date_filter = ''
 
-        if start_date:
+        if start_date and end_date:
+            filters.pop('available')
             date_filter = Availability.date.between(start_date, end_date)
 
         if kind == 'city':
@@ -82,7 +83,8 @@ class SearchResource(Resource):
             query = Availability.query.filter_by(**filters). \
                 filter(date_filter)
 
-        query = query.group_by(Availability.hotel_id).having(func.min(Availability.available) == 1)
+        if start_date and end_date:
+            query = query.group_by(Availability.hotel_id).having(func.min(Availability.available) == 1)
 
         serializer = AvailabilitySerializer(query, many=True)
 
