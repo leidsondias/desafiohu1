@@ -59,7 +59,6 @@ class SearchResource(Resource):
         GROUP BY aa.hotel_id
         HAVING min(aa.available) = 1
         """
-
         params = self.parser.parse_args()
         kind = params.get('kind')
         _id = params['id']
@@ -85,6 +84,8 @@ class SearchResource(Resource):
 
         if start_date and end_date:
             query = query.group_by(Availability.hotel_id).having(func.min(Availability.available) == 1)
+        else:
+            query = query.group_by(Availability.hotel_id)
 
         serializer = AvailabilitySerializer(query, many=True)
 

@@ -9,6 +9,13 @@
                 <label for="local">Quer ficar onde?</label>
                 <div class="form-group">
                     <input type="text" ng-model="search.local" ng-change="autoComplete()" name="local" id="local" placeholder="cidade ou hotel"/>
+                    <div class="auto-complete">
+                        <div class="result">
+                            <ul>
+                                <li ng-repeat="item in autoCompleteList" ng-click="setLocal(item)">{{item.name}}</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-xs-6">

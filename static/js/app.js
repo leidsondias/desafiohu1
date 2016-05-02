@@ -31,11 +31,11 @@ angular
         controller: 'SearchCtrl',
         controllerAs: 'search'
       })
-//      .when('/result', {
-//        templateUrl: 'views/result.html',
-//        controller: 'ResultCtrl',
-//        controllerAs: 'result'
-//      })
+      .when('/result', {
+        templateUrl: 'views/result.html',
+        controller: 'ResultCtrl',
+        controllerAs: 'result'
+      })
       .otherwise({
         redirectTo: '/'
       });

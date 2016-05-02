@@ -81,8 +81,9 @@ class TestSearchApi(unittest.TestCase):
 
     def test_get_availability_search(self):
         u"""
-        Teste de retorno de disponibilidade por <hotel>
+        Teste de retorno de disponibilidade por <hotel>, <city> e/ou <date>
         """
+        # @TODO: TERMINAR ESTE TESTE
         is_ok = True
         start_date = '2015-05-04'
         end_date = '2015-05-06'
