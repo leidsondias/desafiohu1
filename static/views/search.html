@@ -1,0 +1,27 @@
+<div class="container container-round">
+    <div class="search-header">
+        <span>HOTÉIS</span>
+    </div>
+    <div class="content">
+        <p class="align-center color-blue">+ 170.000 hotéis, pousadas e resorts no mundo todo.</p>
+        <form>
+            <div class="col-xs-6">
+                <label for="local">Quer ficar onde?</label>
+                <div class="form-group">
+                    <input type="text" ng-model="search.local" ng-change="autoComplete()" name="local" id="local" placeholder="cidade ou hotel"/>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <label>Quando? (Entrada e Saída)</label>
+                <div class="form-group">
+                    <input type="text" pikaday ng-model="search.start_date" name="start_date" id="start_date" />
+                    <input type="text" pikaday ng-model="search.end_date" name="end_date" id="end_date" />
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" ng-model="search.has_date"> Ainda não defini as datas
+                </div>
+            </div>
+            <button class="submit" ng-click="doSearch()">BUSCAR</button>
+        </form>
+    </div>
+</div>

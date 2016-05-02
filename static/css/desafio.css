@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+}
+
+/************************************************************************
+                               COMPONENTES
+************************************************************************/
+.container{
+    width: 50%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.container-round{
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+.search-header{
+    background : #00aeef;
+    padding: 15px 0;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 4px 4px 0 0;
+}
+
+.content{
+    padding: 0 10px;
+}
+
+.col-xs-6{
+    width: 50%;
+    float: left;
+}
+
+/************************************************************************
+                               FONTES
+************************************************************************/
+.align-center{
+    text-align: center;
+}
+
+/************************************************************************
+                               ICONS
+************************************************************************/
+.icon {
+    float: left;
+    width: 48px;
+    height: 48px;
+}
+
+.icon-hotel{
+    background: url('../images/icon-hotel.png') no-repeat;
+    display:inline-block;
+}
+
+/************************************************************************
+                               CORES
+************************************************************************/
+.color-blue{
+    color: #00aeef;
+}
