@@ -79,9 +79,18 @@ class TestSearchApi(unittest.TestCase):
         availability = Availability.query.get(1)
         self.assertTrue(availability)
 
-    def test_get_availability_hotel(self):
+    def test_get_availability_search(self):
         u"""
         Teste de retorno de disponibilidade por <hotel>
         """
-        availability = Availability.query.filter_by(hotel_id=1).all()
-        self.assertTrue(availability)
+        is_ok = True
+        start_date = '2015-05-04'
+        end_date = '2015-05-06'
+        availability = Availability.query.filter_by(hotel_id=1)
+        if not availability:
+            is_ok = False
+
+        availability = Availability.query.filter(Availability.date.between(start_date, end_date))
+        if not availability:
+            is_ok = False
+
