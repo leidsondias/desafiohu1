@@ -31,7 +31,6 @@ def test():
     unittest.TextTestRunner().run(suite)
 
 
-
 @manager.command
 def create_db():
     db.create_all()
@@ -44,11 +43,17 @@ def drop_db():
 
 
 @manager.command
+def recreate_db():
+    drop_db()
+    create_db()
+
+
+@manager.command
 def load_data():
     import urllib, datetime
     from search_api.models import (Hotel, Availability)
 
-    response = urllib.urlopen('https://raw.githubusercontent.com/leidsondias/desafiohu1/master/artefatos/hoteis.txt')
+    response = urllib.urlopen('artefatos/hoteis.txt')
 
     for line in response.readlines():
         _id, _city, name = str(line.strip()).split(',')
@@ -58,7 +63,7 @@ def load_data():
         hotel = Hotel(name.decode('utf-8'), city)
         db.session.add(hotel)
 
-    response = urllib.urlopen('https://raw.githubusercontent.com/leidsondias/desafiohu1/master/artefatos/disp.txt')
+    response = urllib.urlopen('artefatos/disp.txt')
 
     for line in response.readlines():
         hotel_id, date, available = str(line.strip()).split(',')
