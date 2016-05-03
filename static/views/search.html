@@ -1,34 +1,47 @@
 <div class="container container-round">
-    <div class="search-header">
+    <div class="search-header color-white">
+        <i class="fa fa-hotel fa-fw border-circle" aria-hidden="true"></i>
         <span>HOTÉIS</span>
     </div>
     <div class="content">
-        <p class="align-center color-blue">+ 170.000 hotéis, pousadas e resorts no mundo todo.</p>
-        <form>
-            <div class="col-xs-6">
-                <label for="local">Quer ficar onde?</label>
-                <div class="form-group">
-                    <input type="text" ng-model="search.local" ng-change="autoComplete()" name="local" id="local" placeholder="cidade ou hotel"/>
-                    <div class="auto-complete">
-                        <div class="result">
-                            <ul>
-                                <li ng-repeat="item in autoCompleteList" ng-click="setLocal(item)">{{item.name}}</li>
-                            </ul>
-                        </div>
+        <span class="align-center color-blue">+170.000 hotéis, pousadas e resorts no mundo todo.</span>
+        <form name="search_form">
+            <div class="row relative">
+                <div class="col-xs-6">
+                    <label for="local">Quer ficar onde?</label>
+                    <div class="form-group">
+                        <i class="fa fa-map-marker fa-fw color-orange" aria-hidden="true"></i>
+                        <input type="text" required class="input-lg" autocomplete="off" ng-model="search.local" ng-change="autoComplete()" name="local" id="local" placeholder="cidade ou hotel"/>
+                    </div>
+                </div>
+                <div class="auto-complete">
+                    <div class="auto-complete-border"></div>
+                    <div class="result">
+                        <ul>
+                            <li ng-repeat="item in autoCompleteList" ng-click="setLocal(item)">
+                                <i class="fa fa-search"></i>
+                                <span>{{item.name}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="auto-complete-border"></div>
+                </div>
+                <div class="col-xs-6">
+                    <label>Quando? (Entrada e Saída)</label>
+                    <div class="form-group">
+                        <i class="fa fa-calendar fa-fw color-orange" aria-hidden="true"></i>
+                        <input type="text" class="input-xs" ng-required="!search.has_date" placeholder="entrada" pikaday ng-model="search.start_date" name="start_date" id="start_date" />
+                        <i class="fa fa-calendar fa-fw color-orange" aria-hidden="true"></i>
+                        <input type="text" class="input-xs" ng-required="!search.has_date" placeholder="saída" pikaday ng-model="search.end_date" name="end_date" id="end_date" />
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" ng-model="search.has_date"> Ainda não defini as datas
                     </div>
                 </div>
             </div>
-            <div class="col-xs-6">
-                <label>Quando? (Entrada e Saída)</label>
-                <div class="form-group">
-                    <input type="text" pikaday ng-model="search.start_date" name="start_date" id="start_date" />
-                    <input type="text" pikaday ng-model="search.end_date" name="end_date" id="end_date" />
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" ng-model="search.has_date"> Ainda não defini as datas
-                </div>
+            <div class="row align-center">
+                <button class="btn btn-search color-white bg-orange" ng-click="doSearch()"><i class="fa fa-search fa-fw color-white" aria-hidden="true"></i> BUSCAR</button>
             </div>
-            <button class="submit" ng-click="doSearch()">BUSCAR</button>
         </form>
     </div>
 </div>

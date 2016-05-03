@@ -8,6 +8,7 @@ from datetime import datetime
 
 from search_api import app, db
 from search_api.models import (City, Hotel, Availability)
+from sqlalchemy import func
 
 
 class TestSearchApi(unittest.TestCase):
@@ -87,11 +88,30 @@ class TestSearchApi(unittest.TestCase):
         is_ok = True
         start_date = '2015-05-04'
         end_date = '2015-05-06'
-        availability = Availability.query.filter_by(hotel_id=1)
-        if not availability:
+        filters = {"available": True}
+        _id = 1
+
+        filters.pop('available')
+        date_filter = Availability.date.between(start_date, end_date)
+
+        query = Availability.query.filter_by(**filters). \
+            from_self(). \
+            join(Availability.hotel).filter_by(city_id=_id). \
+            filter(date_filter)
+
+        query = query.group_by(Availability.hotel_id).having(func.min(Availability.available) == 1)
+
+        if not query.all():
             is_ok = False
 
-        availability = Availability.query.filter(Availability.date.between(start_date, end_date))
-        if not availability:
+        filters.update({"hotel_id": _id})
+        query = Availability.query.filter_by(**filters). \
+            filter(date_filter)
+
+        query = query.group_by(Availability.hotel_id).having(func.min(Availability.available) == 1)
+
+        if not query.all():
             is_ok = False
+
+        self.assertTrue(is_ok)
 

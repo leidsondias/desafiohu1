@@ -76,16 +76,16 @@ class SearchResource(Resource):
             query = Availability.query.filter_by(**filters). \
                 from_self(). \
                 join(Availability.hotel).filter_by(city_id=_id). \
-                filter(date_filter)
+                filter(date_filter). \
+                group_by(Availability.hotel_id). \
+                having(func.min(Availability.available) == 1). \
+                order_by(Hotel.name)
         else:
             filters.update({"hotel_id": _id})
             query = Availability.query.filter_by(**filters). \
-                filter(date_filter)
-
-        if start_date and end_date:
-            query = query.group_by(Availability.hotel_id).having(func.min(Availability.available) == 1)
-        else:
-            query = query.group_by(Availability.hotel_id)
+                filter(date_filter). \
+                group_by(Availability.hotel_id). \
+                having(func.min(Availability.available) == 1)
 
         serializer = AvailabilitySerializer(query, many=True)
 

@@ -1,7 +1,10 @@
-<div class="search-header"></div>
-<div class="container">
-    <div ng-repeat="item in results">
-        <img src="http://placehold.it/200x150" alt="{{item.hotel.name}}" />
-        {{item.hotel.name}}
+<header>
+    <i class="fa fa-arrow-left fa-fw color-white"></i>
+</header>
+    <div class="row">
+            <div ng-repeat="item in hotels" class="item-hotel">
+                <img src="http://placehold.it/200x150" alt="{{item.hotel.name}}" />
+                <span>{{item.hotel.name}}</span>
+            </div>
     </div>
 </div>
