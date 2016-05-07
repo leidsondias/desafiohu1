@@ -1,211 +1,100 @@
+/*****************************************************************************************
+*                                      GLOBAL
+*****************************************************************************************/
 body {
-    margin: 0;
-    padding: 0;
     font-size: 14px;
     font-family: "Gotham Light",'Helvetica Neue', Arial,Helvetica,sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 
-
-a{
-	text-decoration: none;
-	color: #000000;
-}
-
-ul{
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-
-.relative{
-    position: relative;
-}
-
-/************************************************************************
-                               COMPONENTES
-************************************************************************/
-header{
-    height: 20px;
-    background : #00aeef;
-}
-
-.container{
-    width: 45%;
-    margin: 0 auto;
-}
-
-.container-round{
-    border-radius: 4px;
-    box-shadow: 0 0 4px rgba(0,0,0,0.2);
-}
-
-.search-header, .auto-complete-border{
-    font-weight: 200;
-    background : #00aeef;
-    padding: 15px 0;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 24px;
-    border-radius: 4px 4px 0 0;
-}
-
-.auto-complete-border{
-    border-radius: 0;
-    padding: 4px;
-}
-
-.search-header span{
-    font-size: 30px;
-}
-
-.content{
-    padding: 0 10px;
-}
-
-.col-xs-6{
-    width: 50%;
-    float: left;
-}
-
-.auto-complete:after {
-	content: "";
-    width: 0;
-	height: 0;
-	position: absolute;
-	top: -8px;
-	left: 15px;
-	border-style: solid;
-	border-width: 0 20px 15px 20px;
-	border-color: transparent transparent #00aeef transparent;
-}
-
-
-.auto-complete{
-	display: none;
-	border: 1px solid #00aeef;
-	width: 100%;
-	position: absolute;
-	background: #FFFFFF;
-	top: 75px;
-	z-index: 1;
-
-}
-
-.auto-complete > .result{
-	padding: 10px;
-}
-
-.auto-complete > .result{
-  	display: table;
-}
-
-.auto-complete > .result > ul > li > .fa{
-    color: #E5E5E5;
-    margin: 5px 20px 5px 0;
-}
-
-.auto-complete > .result > ul > li > span{
-    color: #656565;
-    font-size: 14px;
-}
-
-.border-circle{
-    border-radius: 100%;
-    padding: 5px;
-    border: 2px solid #FFFFFF;
-}
-
-.content{
-    text-align: center;
-    padding: 10px;
-}
-
-.content span{
+.text{
     font-size: 22px;
     font-weight: normal;
 }
 
-.content form{
-    margin: 10px 0 0 0;
-    text-align: left;
+label{
     color: #656565;
     font-weight: bold;
+    font-size: 15px;
 }
 
-.content form .form-group{
-    position: relative;
-    margin: 0 0 5px 0;
+.row .checkbox{
+    margin-top: 8px;
     font-weight: normal;
     font-size: 12px;
 }
 
-.row{
-    /*position: relative;*/
+/*****************************************************************************************
+*                                      COLORS
+*****************************************************************************************/
+.color-default{
+    color: #36BEFE;
+}
+
+.color-orange{
+    color: #FF8A00;
+}
+
+/*****************************************************************************************
+*                                      ALIGNS
+*****************************************************************************************/
+.text-center{
+    text-align: center;
+}
+
+/*****************************************************************************************
+*                                      COMPONENTS
+*****************************************************************************************/
+.search-component {
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.2);
+    margin: 20px auto;
+}
+
+.search-component > header{
+    border-radius: 4px 4px 0 0;
+}
+
+.search-component > header > span{
+    font-size: 25px;
+}
+
+
+header{
+    color: #FFFFFF;
+    font-weight: 200;
+    background: #36BEFE;
+    padding: 5px 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 19px;
+}
+
+
+.border-circle{
+    border-radius: 100%;
+    padding: 10px;
+    border: 3px solid #FFFFFF;
+}
+
+.form-group{
+    position: relative;
 }
 
 .form-group i.fa{
     position: absolute;
     top: 15px;
     font-size: 30px;
+    left: 10px;
 }
 
-.input-lg, .input-xs{
+input.default{
     margin: 10px 0 0 0;
-    width: 70%;
-    height: 20px;
-    padding: 10px 10px 10px 35px;
+    height: 40px;
+    padding: 10px 10px 10px 40px;
     font-size: 12px;
     color: #003966;
     border: 1px solid #E5E5E5;
     border-radius: 4px;
-}
-
-.input-xs{
-    width: 25%;
-}
-
-.btn{
-    border:0;
-    border-radius: 5px;
-    padding: 15px 20px 15px 20px;
-    width: 150px;
-    font-size: 20px;
-    font-size: 14px;
-    font-weight: bolder;
-}
-
-.btn-search{
-    margin-top: 30px;
-}
-
-.item-hotel{
-    border: 1px solid #CCCCCC;
-    margin: 10px;
-}
-
-/************************************************************************
-                               FONTES
-************************************************************************/
-.align-center{
-    text-align: center;
-}
-
-/************************************************************************
-                               CORES
-************************************************************************/
-.color-blue{
-    color: #00aeef;
-}
-
-.color-orange{
-    color: #FF8A21;
-}
-
-.color-white{
-    color: #FFFFFF;
-}
-
-.bg-orange{
-    background: #FF8A21;
+    width: 100%;
 }

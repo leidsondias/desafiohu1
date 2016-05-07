@@ -1,10 +1,20 @@
 <header>
-    <a href="/"><i class="fa fa-arrow-left fa-fw color-white"></i></a>
+    <a href="/#/"><i class="fa fa-arrow-left fa-fw color-white"></i></a>
 </header>
+<div class="container">
     <div class="row">
-            <div ng-repeat="item in hotels" class="item-hotel">
-                <img src="http://placehold.it/200x150" alt="{{item.hotel.name}}" />
-                <span>{{item.hotel.name}}</span>
+        <div ng-repeat="item in hotels" class="item-hotel">
+            <img src="images/thumb_hotel.png" alt="{{item.hotel.name}}" />
+            <span>{{item.hotel.name}}</span>
+            <div class="info">
+                <p>Diárias a partir de</p>
+                <p class="price">R$200</p>
+                <p class="parc">Em até 12x</p>
+
+                <div class="btn">
+                    <a href="#" target="_blank"> Ver Hotel </a>
+                </div>
             </div>
+        </div>
     </div>
 </div>
