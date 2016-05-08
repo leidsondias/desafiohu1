@@ -21,7 +21,6 @@ class HotelSerializer(serpy.Serializer):
     id = serpy.IntField()
     name = serpy.Field()
     city = CitySerializer()
-    # city_id = serpy.IntField()
 
 
 class AvailabilitySerializer(serpy.Serializer):

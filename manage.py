@@ -49,7 +49,7 @@ def recreate_db():
 
 
 @manager.command
-def load_data():
+def load_db():
     import urllib, datetime
     from search_api.models import (Hotel, Availability)
 

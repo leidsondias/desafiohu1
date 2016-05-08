@@ -38,6 +38,8 @@ class SearchResource(Resource):
     parser.add_argument('id')
     parser.add_argument('start_date')
     parser.add_argument('end_date')
+    parser.add_argument('limit', default=2)
+    parser.add_argument('offset', default=0)
 
     def post(self):
         """
@@ -64,6 +66,8 @@ class SearchResource(Resource):
         _id = params['id']
         start_date = params.get('start_date')
         end_date = params.get('end_date')
+        limit = params.get('limit')
+        offset = params.get('offset')
 
         filters = {"available": True}
         date_filter = ''
@@ -86,6 +90,8 @@ class SearchResource(Resource):
                 filter(date_filter). \
                 group_by(Availability.hotel_id). \
                 having(func.min(Availability.available) == 1)
+
+        query = query.limit(limit).offset(offset).all()
 
         serializer = AvailabilitySerializer(query, many=True)
 
