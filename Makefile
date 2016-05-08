@@ -20,7 +20,10 @@ load_data:
 	@python manage.py load_db
 
 run:
-	@python site/server.py & python manage.py runserver
+	@python site/server.py & python manage.py runserver & corsproxy
+
+stop:
+	@kill -9 $(lsof -ti tcp:8000) & kill -9 $(lsof -ti tcp:5000) & kill -9 $(lsof -ti tcp:1337)
 
 clean:
 	@find . -name "*.pyc" -print0 | xargs -0 rm -rf

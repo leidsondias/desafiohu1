@@ -9,8 +9,6 @@
  */
 angular.module('desafioApp')
     .controller('ResultCtrl', function ($scope, $http, $location, CONFIG) {
-        console.log('===ResultCtrl CTRL====');
-
         $scope.randomPrice = function(){
             return Math.floor((Math.random()*1000)+1);
         };
