@@ -5,10 +5,10 @@ Para instalar o projetoe suas dependências e popular o banco você deve rodar o
 ```sh
 $ make install
 ```
-Além dos requirements é instalado um pacote do NodeJS, o *corsproxy* para rodar dois servidores com domínios diferentes na mesma máquina.
+Além dos requirements é instalado um pacote do NodeJS. O *corsproxy* para rodar dois servidores com domínios diferentes na mesma máquina.
 
 ### Rodando projeto
-Para rodar os dois servidores basta executar o comando:
+Para rodar os servidores basta executar o comando:
 ```sh
 $ make run
 ```
