@@ -1,18 +1,24 @@
-<header>
-    <a href="/#/"><i class="fa fa-arrow-left fa-fw color-white"></i></a>
+<header class="text-left">
+    <a href="/#/"><i class="fa fa-arrow-left"></i></a>
 </header>
-<div class="container">
-    <div class="row">
-        <div ng-repeat="item in hotels" class="item-hotel">
-            <img src="images/thumb_hotel.png" alt="{{item.hotel.name}}" />
-            <span>{{item.hotel.name}}</span>
-            <div class="info">
-                <p>Diárias a partir de</p>
-                <p class="price">R$200</p>
-                <p class="parc">Em até 12x</p>
-
-                <div class="btn">
-                    <a href="#" target="_blank"> Ver Hotel </a>
+<div class="result-component">
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div ng-repeat="item in hotels" class="row item-hotel">
+                <div class="col-md-3">
+                    <img src="images/thumb_hotel.png" alt="{{item.hotel.name}}" />
+                </div>
+                <div class="col-md-7">
+                    <span><i><small>{{item.hotel.city.name}}</small></i></span>
+                    <p class="color-default"><b>{{item.hotel.name}}</b></p>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="info">
+                        <p>Diárias a partir de</p>
+                        <p class="price" random="1000">R$<span></span></p>
+                        <p class="parc" random="10">Em até <span></span>x</p>
+                    </div>
+                    <a href="#" class="bg-orange more-hotel" target="_blank"> Ver Hotel </a>
                 </div>
             </div>
         </div>

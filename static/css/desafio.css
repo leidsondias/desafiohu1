@@ -24,6 +24,17 @@ label{
     font-size: 12px;
 }
 
+a, a:hover, a:focus {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
 /*****************************************************************************************
 *                                      COLORS
 *****************************************************************************************/
@@ -35,6 +46,14 @@ label{
     color: #FF8A00;
 }
 
+.color-white{
+    color: #FFFFFF;
+}
+
+.bg-orange{
+    background: #FF8A21;
+}
+
 /*****************************************************************************************
 *                                      ALIGNS
 *****************************************************************************************/
@@ -42,9 +61,21 @@ label{
     text-align: center;
 }
 
+.text-left{
+    text-align: left;
+}
+
 /*****************************************************************************************
 *                                      COMPONENTS
 *****************************************************************************************/
+.container-fluid{
+    padding-bottom: 15px;
+}
+
+.result-component {
+    margin: 20px auto;
+}
+
 .search-component {
     border-radius: 4px;
     box-shadow: 0 0 4px rgba(0,0,0,0.2);
@@ -60,7 +91,7 @@ label{
 }
 
 
-header{
+header, .auto-complete-border{
     color: #FFFFFF;
     font-weight: 200;
     background: #36BEFE;
@@ -70,11 +101,20 @@ header{
     font-size: 19px;
 }
 
+.auto-complete-border{
+    border-radius: 0;
+    padding: 4px;
+}
+
 
 .border-circle{
     border-radius: 100%;
     padding: 10px;
     border: 3px solid #FFFFFF;
+}
+
+.rounded{
+    border-radius: 5px;
 }
 
 .form-group{
@@ -97,4 +137,72 @@ input.default{
     border: 1px solid #E5E5E5;
     border-radius: 4px;
     width: 100%;
+}
+
+.auto-complete:after {
+	content: "";
+    width: 0;
+	height: 0;
+	position: absolute;
+	top: -8px;
+	left: 15px;
+	border-style: solid;
+	border-width: 0 20px 15px 20px;
+	border-color: transparent transparent #36BEFE transparent;
+}
+
+.auto-complete{
+	display: none;
+	border: 1px solid #00aeef;
+	position: absolute;
+	background: #FFFFFF;
+	z-index: 1;
+	top: 57px;
+
+}
+
+.auto-complete > .result{
+	padding: 10px;
+}
+
+.auto-complete > .result{
+  	display: table;
+}
+
+.auto-complete > .result > ul > li > .fa{
+    color: #E5E5E5;
+    margin: 5px 20px 5px 0;
+}
+
+.auto-complete > .result > ul > li > span{
+    color: #656565;
+    font-size: 14px;
+}
+
+.btn{
+    border:0;
+    border-radius: 5px;
+    padding: 15px 20px 15px 20px;
+    width: 150px;
+    font-size: 20px;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.btn-search{
+    color: #FFFFFF;
+    margin-top: 30px;
+}
+
+.price{
+    font-size: 20px;
+}
+
+.more-hotel{
+    color: #FFFFFF;
+    border-radius: 5px;
+    padding: 10px 25px 10px 25px;
+    position: absolute;
+    bottom: 10px;
+    left: 18px;
 }

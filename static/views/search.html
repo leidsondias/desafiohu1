@@ -64,6 +64,18 @@
                                 <i class="fa fa-map-marker color-orange" aria-hidden="true"></i>
                                 <input type="text" required class="default" autocomplete="off" ng-model="search.local" ng-change="autoComplete()" name="local" id="local" placeholder="cidade ou hotel"/>
                             </div>
+                            <div class="auto-complete">
+                                <div class="auto-complete-border"></div>
+                                <div class="result">
+                                    <ul>
+                                        <li ng-repeat="item in autoCompleteList" ng-click="setLocal(item)">
+                                            <i class="fa fa-search"></i>
+                                            <span>{{item.name}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="auto-complete-border"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -90,8 +102,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <button class="btn btn-search color-white bg-orange" ng-click="doSearch()"><i class="fa fa-search color-white" aria-hidden="true"></i> BUSCAR</button>
+            <div class="row text-center">
+                <button class="btn btn-search bg-orange" ng-click="doSearch()"><i class="fa fa-search color-white" aria-hidden="true"></i> BUSCAR</button>
             </div>
         </form>
     </div>

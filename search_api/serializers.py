@@ -3,6 +3,11 @@
 import serpy
 
 
+class CitySerializer(serpy.Serializer):
+    id = serpy.IntField()
+    name = serpy.Field()
+
+
 class AutoCompleteList(serpy.Serializer):
     id = serpy.IntField()
     name = serpy.Field()
@@ -15,7 +20,8 @@ class AutoCompleteList(serpy.Serializer):
 class HotelSerializer(serpy.Serializer):
     id = serpy.IntField()
     name = serpy.Field()
-    city_id = serpy.IntField()
+    city = CitySerializer()
+    # city_id = serpy.IntField()
 
 
 class AvailabilitySerializer(serpy.Serializer):
