@@ -38,7 +38,7 @@ class SearchResource(Resource):
     parser.add_argument('id')
     parser.add_argument('start_date')
     parser.add_argument('end_date')
-    parser.add_argument('limit', default=2)
+    parser.add_argument('limit', default=5)
     parser.add_argument('offset', default=0)
 
     def post(self):
@@ -91,11 +91,12 @@ class SearchResource(Resource):
                 group_by(Availability.hotel_id). \
                 having(func.min(Availability.available) == 1)
 
+        total = query.count()
         query = query.limit(limit).offset(offset).all()
 
         serializer = AvailabilitySerializer(query, many=True)
 
-        return serializer.data
+        return {'total': total, 'results': serializer.data}
 
 
 api.add_resource(AutoCompleteListResource, '/list')

@@ -189,6 +189,10 @@ input.default{
     font-weight: bolder;
 }
 
+.item-hotel > .col-md-2{
+    background: #EDEDED;
+}
+
 .btn-search{
     color: #FFFFFF;
     margin-top: 30px;

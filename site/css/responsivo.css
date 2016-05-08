@@ -48,6 +48,11 @@
         margin-top: 15px;
     }
 
+    .item-hotel{
+        margin-bottom: 15px;
+        border: 1px solid #CCCCCC;
+    }
+
     .item-hotel > .col-md-3 {
         text-align: center;
     }
@@ -100,7 +105,6 @@
     .item-hotel > .col-md-2{
         border-left: 1px dashed #CCCCCC;
         min-height: 260px;
-        background: #EDEDED;
     }
 
     .item-hotel > .col-md-2 > .info{
