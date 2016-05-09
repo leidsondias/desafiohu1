@@ -1,14 +1,14 @@
 ### Instalação
 
-Para instalar o projetoe suas dependências e popular o banco você deve rodar o comando abaixo:
+Após criada e ativada a sua virtualenv instale as dependências do projeto e popule o banco com o seguinte comando:
 
 ```sh
 $ make install
 ```
-Além dos requirements é instalado um pacote do NodeJS. O *corsproxy* para rodar dois servidores com domínios diferentes na mesma máquina.
+Além dos requirements é instalado um pacote do NodeJS, o *corsproxy* para rodar dois servidores com domínios diferentes na mesma máquina.
 
 ### Rodando projeto
-Para rodar os servidores basta executar o comando:
+Para rodar os dois servidores basta executar o comando:
 ```sh
 $ make run
 ```
@@ -18,10 +18,7 @@ Os servidores irão rodar nas seguintes portas:
 - 5000 - API
 - 1337 - Proxy
 
-Algumas vezes ao parar o processo *make run* no terminal nem todos os processos são parados. Basta rodar a seguinte linha para que pare todos os processos parem:
-```sh
-$ kill -9 $(lsof -ti tcp:8000) & kill -9 $(lsof -ti tcp:5000) & kill -9 $(lsof -ti tcp:1337)
-```
+Com isto para acessar a página web acesse o endereço: http://localhost:8000/
 
 ### Demais comandos
 

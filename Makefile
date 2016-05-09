@@ -2,7 +2,7 @@ install:
 	@python manage.py create_db
 	@python manage.py load_db
 	@pip install -r requirements.txt
-	@npm install -g corsproxy
+	@npm install corsproxy
 
 test:
 	@python manage.py test
@@ -20,10 +20,7 @@ load_data:
 	@python manage.py load_db
 
 run:
-	@python site/server.py & python manage.py runserver & corsproxy
-
-stop:
-	@kill -9 $(lsof -ti tcp:8000) & kill -9 $(lsof -ti tcp:5000) & kill -9 $(lsof -ti tcp:1337)
+	@honcho start
 
 clean:
 	@find . -name "*.pyc" -print0 | xargs -0 rm -rf

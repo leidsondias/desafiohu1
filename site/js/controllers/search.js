@@ -10,6 +10,7 @@
 angular.module('desafioApp')
     .controller('SearchCtrl', function ($scope, $http, $location, CONFIG, Scopes) {
         var auto_complete_list = angular.element('.auto-complete');
+        var local_error = angular.element('span.error');
 
         $scope.doHide = function(){
             auto_complete_list.css("display", "none");
@@ -37,10 +38,12 @@ angular.module('desafioApp')
         };
 
         $scope.doSearch = function(){
-            if($scope.search_form.$valid){
+            if($scope.search_form.$valid && $scope.search.localObj && $scope.search.local.length > 3){
                 var params = {"kind": $scope.search.localObj.kind, "id": $scope.search.localObj.id,
                         "start_date": $scope.search.start_date, "end_date": $scope.search.end_date}
                 $location.path('/result').search(params);
+            }else if(!$scope.search.localObj || $scope.search.local.length <= 3){
+                local_error.css('display','block');
             }
         };
 
@@ -49,6 +52,7 @@ angular.module('desafioApp')
             $scope.search.local = item.name;
             $scope.search.localObj = item;
             auto_complete_list.css("display", "none");
+            local_error.css('display','none');
         };
 
     });

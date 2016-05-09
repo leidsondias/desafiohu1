@@ -101,6 +101,12 @@ header, .auto-complete-border{
     font-size: 19px;
 }
 
+span.error{
+    display: none;
+    color: red;
+    font-size: 10px;
+}
+
 .auto-complete-border{
     border-radius: 0;
     padding: 4px;

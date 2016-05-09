@@ -5,3 +5,5 @@ Flask-Script==2.0.5
 Flask-SQLAlchemy==2.1
 
 serpy==0.1.1
+
+honcho==0.7.1
