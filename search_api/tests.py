@@ -138,7 +138,7 @@ class TestSearchApi(unittest.TestCase):
         params = {"start_date": '2015-05-10', "end_date":'2015-05-16', "id": 1, "kind": "city"}
         response = self.app.post('search', data=params)
         data = json.loads(response.data)
-        self.assertFalse(data)
+        self.assertFalse(data.get('results'))
 
         # Teste search city <kind:city>, <date:false>
         params = {"id": 1, "kind": "city"}
@@ -150,19 +150,19 @@ class TestSearchApi(unittest.TestCase):
         params = {"start_date": '2015-05-04', "end_date":'2015-05-06', "id": 1, "kind": "hotel"}
         response = self.app.post('search', data=params)
         data = json.loads(response.data)
-        self.assertEquals('Seyhan', data[0].get('hotel').get('name'))
+        self.assertEquals('Seyhan', data.get('results')[0].get('hotel').get('name'))
 
         # >>>> Intervalo com data indisponível para esse hotel
         params = {"start_date": '2015-05-07', "end_date":'2015-05-09', "id": 1, "kind": "hotel"}
         response = self.app.post('search', data=params)
         data = json.loads(response.data)
-        self.assertFalse(data)
+        self.assertFalse(data.get('results'))
 
         # Teste search hotel <kind:hotel>, <date:false>
         params = {"id": 1, "kind": "hotel"}
         response = self.app.post('search', data=params)
         data = json.loads(response.data)
-        self.assertEquals('Seyhan', data[0].get('hotel').get('name'))
+        self.assertEquals('Seyhan', data.get('results')[0].get('hotel').get('name'))
 
 
 
